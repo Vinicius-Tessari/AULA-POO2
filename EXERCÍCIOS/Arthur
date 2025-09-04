@@ -1,0 +1,18 @@
+    class Livro:
+    def _init_(self, titulo, autor, estoque):
+        self.titulo = titulo
+        self.autor = autor
+        self._estoque = 0  # atributo "privado" (convenção em Python)
+        self.estoque = estoque  # usa o setter logo na criação
+
+    @property
+    def estoque(self):
+        """Retorna o valor atual do estoque"""
+        return self._estoque
+
+    @estoque.setter
+    def estoque(self, valor):
+        """Define o valor do estoque, proibindo números negativos"""
+        if valor < 0:
+            raise ValueError("O estoque não pode ser negativo!")
+        self._estoque = valor
